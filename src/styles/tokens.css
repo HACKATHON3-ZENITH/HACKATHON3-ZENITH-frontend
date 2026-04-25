@@ -1,0 +1,73 @@
+:root {
+  /* Brand Colors (Light) */
+  --color-brand-primary: #0D5C4D;
+  --color-brand-primary-hover: #14876E;
+  --color-brand-primary-light: #DCFCE7;
+  --color-brand-secondary: #C49A28;
+  --color-brand-secondary-light: #FEF3C7;
+
+  /* Cisco NetAcad Style (Academy Theme) */
+  --academy-primary: #1A6B3C;
+  --academy-primary-light: #2D9E5F;
+  --academy-accent: #F4A726;
+  --academy-accent-deep: #D4891A;
+  --academy-bg-dark: #0E1A14;
+  --academy-bg-mid: #162B1D;
+  --academy-bg-card: #1E3328;
+  --academy-text-primary: #F0EDE6;
+  --academy-text-muted: #8FA898;
+  --academy-border: rgba(255, 255, 255, 0.08);
+
+  /* Semantic Colors */
+  --color-success: #1A7F37;
+  --color-error: #CF222E;
+  --color-warning: #9A6700;
+  --color-info: #0969DA;
+
+  /* Neutrals */
+  --gray-100: #F6F8FA;
+  --gray-200: #D0D7DE;
+  --gray-600: #57606A;
+  --gray-900: #1F2328;
+  --white: #FFFFFF;
+
+  /* Surfaces & Backgrounds */
+  --bg-page: var(--gray-100);
+  --bg-surface: var(--white);
+  --bg-panel: var(--white);
+  
+  /* Text */
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --text-on-brand: var(--white);
+
+  /* Shared */
+  --radius-button: 4px;
+  --radius-input: 4px;
+  --radius-card: 8px;
+  --radius-pill: 9999px;
+  --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark, .theme-academy {
+  --bg-page: var(--academy-bg-dark);
+  --bg-surface: var(--academy-bg-mid);
+  --bg-panel: var(--academy-bg-card);
+  
+  --text-primary: var(--academy-text-primary);
+  --text-secondary: var(--academy-text-muted);
+  
+  --color-brand-primary: var(--academy-primary);
+  --color-brand-primary-hover: var(--academy-primary-light);
+  --color-brand-secondary: var(--academy-accent);
+  --color-brand-primary-light: rgba(45, 158, 95, 0.1);
+}
+
+/* Typography Classes */
+.font-serif-academy {
+  font-family: 'Fraunces', serif;
+}
+
+.font-sans-academy {
+  font-family: 'DM Sans', sans-serif;
+}
