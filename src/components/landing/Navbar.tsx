@@ -19,6 +19,7 @@ export function Navbar() {
   const navLinks = [
     { name: 'Formations', href: '#formations' },
     { name: 'Expertise', href: '#expertise' },
+    { name: 'Analyse IA', to: '/ia-analyse' },
     { name: 'Communauté', href: '#communaute' },
     { name: 'Impact', href: '#impact' },
   ];
@@ -49,17 +50,31 @@ export function Navbar() {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-10">
           {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              className={cn(
-                "text-sm font-bold tracking-wide uppercase transition-all hover:text-brand-primary relative group",
-                scrolled ? "text-gray-600" : "text-gray-700"
-              )}
-            >
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-primary transition-all group-hover:w-full" />
-            </a>
+            link.to ? (
+              <Link
+                key={link.name}
+                to={link.to}
+                className={cn(
+                  "text-sm font-bold tracking-wide uppercase transition-all hover:text-brand-primary relative group",
+                  scrolled ? "text-gray-600" : "text-gray-700"
+                )}
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-primary transition-all group-hover:w-full" />
+              </Link>
+            ) : (
+              <a
+                key={link.name}
+                href={link.href}
+                className={cn(
+                  "text-sm font-bold tracking-wide uppercase transition-all hover:text-brand-primary relative group",
+                  scrolled ? "text-gray-600" : "text-gray-700"
+                )}
+              >
+                {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-primary transition-all group-hover:w-full" />
+              </a>
+            )
           ))}
         </div>
 
@@ -104,14 +119,25 @@ export function Navbar() {
             className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-100 py-8 px-6 space-y-6 shadow-2xl"
           >
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="block text-xl font-bold text-gray-900 border-b border-gray-50 pb-4"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </a>
+              link.to ? (
+                <Link
+                  key={link.name}
+                  to={link.to}
+                  className="block text-xl font-bold text-gray-900 border-b border-gray-50 pb-4"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="block text-xl font-bold text-gray-900 border-b border-gray-50 pb-4"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.name}
+                </a>
+              )
             ))}
             <div className="pt-4 flex flex-col space-y-4">
               <Link

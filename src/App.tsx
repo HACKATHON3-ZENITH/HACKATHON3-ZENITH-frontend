@@ -22,6 +22,7 @@ import Catalogue from './pages/Catalogue/Catalogue';
 import CourseDetail from './pages/CourseDetail/CourseDetail';
 import LessonReader from './pages/LessonReader/LessonReader';
 import CreatorDashboard from './pages/Creator/CreatorDashboard';
+import IAAnalysis from './pages/IAAnalysis';
 import CourseCard from './components/CourseCard/CourseCard';
 import CourseGrid from './components/CourseGrid/CourseGrid';
 import { useCourses } from './hooks/useCourses';
@@ -156,6 +157,7 @@ function App() {
     return (
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/ia-analyse" element={<IAAnalysis />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/onboarding" element={<OnboardingPage />} />
         <Route path="/cours/:slug/lecture/:leconId" element={<LessonReader />} />
