@@ -1,3 +1,8 @@
+/**
+ * TWIST 05 — Les données collectées à l'onboarding alimentent la
+ * segmentation explicite en deux profils : entrepreneur_actif (~20%)
+ * et explorateur (~80%). Les recommandations diffèrent selon le segment.
+ */
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Loader2, CheckCircle } from 'lucide-react';
