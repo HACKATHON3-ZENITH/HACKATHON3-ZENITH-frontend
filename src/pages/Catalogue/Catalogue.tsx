@@ -65,7 +65,8 @@ const Catalogue: React.FC = () => {
       let segmentLabel = mlData.segment === 'entrepreneur_actif' ? 'Entrepreneurs actifs' : 'Explorateurs';
       return {
         ...parent,
-        recoReason: `★ Recommandé par Zenith ML (Score: ${Math.round(reco.final_score * 100)}%). Parfait pour les ${segmentLabel.toLowerCase()}.`
+        recoReason: `★ Recommandé par Zenith ML (Score: ${Math.round(reco.final_score * 100)}%). Parfait pour les ${segmentLabel.toLowerCase()}.`,
+        contributions: reco.detail.contributions
       };
     }).filter(Boolean).slice(0, 4);
   }, [mlData, courses]);

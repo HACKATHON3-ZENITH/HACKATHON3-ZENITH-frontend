@@ -19,6 +19,12 @@ interface LearnerRanking {
     avg_engagement: number;
     segment: string;
   };
+  contributions?: Array<{
+    factor: string;
+    weight: number | string;
+    value: number;
+    impact: number;
+  }>;
   explanation?: {
     explanation_text: string;
   };
@@ -85,9 +91,31 @@ const SuccessLeaderboard: React.FC = () => {
                 </div>
                 
                 {learner.explanation && (
-                  <div className="bg-muted/50 p-3 rounded-lg text-sm whitespace-pre-line border-l-4 border-primary">
-                    <p className="font-semibold mb-1">Pourquoi ce classement ? (Explainability T06/T07)</p>
-                    {learner.explanation.explanation_text}
+                  <div className="bg-muted/50 p-4 rounded-lg text-sm border-l-4 border-primary space-y-3">
+                    <div>
+                      <p className="font-semibold mb-1">Pourquoi ce classement ? (Explainability T06/T07)</p>
+                      <p className="whitespace-pre-line">{learner.explanation.explanation_text}</p>
+                    </div>
+                    
+                    {learner.contributions && (
+                      <div className="pt-2 border-t border-border/50">
+                        <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Décomposition quantitative (Twist 09)</p>
+                        <ul className="space-y-1.5">
+                          {learner.contributions.map((c, i) => (
+                            <li key={i} className="flex justify-between items-center text-xs">
+                              <span>{c.factor} <span className="text-muted-foreground">({typeof c.weight === 'number' ? `x${c.weight}` : c.weight})</span></span>
+                              <span className={clsx("font-mono font-medium", c.impact >= 0 ? "text-green-600" : "text-red-500")}>
+                                {c.impact > 0 ? '+' : ''}{c.impact.toFixed(4)}
+                              </span>
+                            </li>
+                          ))}
+                          <li className="flex justify-between items-center pt-1 border-t border-dashed border-border text-xs font-bold">
+                            <span>Score Final</span>
+                            <span>{learner.score.toFixed(4)}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

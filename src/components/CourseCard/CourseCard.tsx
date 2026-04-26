@@ -33,6 +33,12 @@ interface CourseCardProps {
   skills?: Skill[];
   badgeName?: string;
   recoReason?: string;
+  contributions?: Array<{
+    factor: string;
+    weight: number | string;
+    value: number;
+    impact: number;
+  }>;
   isEnrolled?: boolean;
   userCompletionRate?: number;
   variant?: 'default' | 'compact';
@@ -53,6 +59,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   reviewCount = 0,
   priceXaf,
   recoReason,
+  contributions,
   isEnrolled,
   userCompletionRate = 0,
   variant = 'default',
@@ -119,7 +126,20 @@ const CourseCard: React.FC<CourseCardProps> = ({
       </div>
 
       {recoReason && (
-        <div className={styles['course-card__reco-reason']}>{recoReason}</div>
+        <div className={styles['course-card__reco-reason']}>
+          <p>{recoReason}</p>
+          {contributions && (
+            <div className={styles['course-card__contributions']} style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid rgba(13, 92, 77, 0.2)', fontSize: '0.75rem' }}>
+              <p style={{ fontWeight: 800, textTransform: 'uppercase', marginBottom: '6px', fontSize: '10px', opacity: 0.8 }}>Décomposition Twist 09</p>
+              {contributions.map((c, i) => (
+                <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                  <span>{c.factor}</span>
+                  <span style={{ fontWeight: 600 }}>{c.impact > 0 ? '+' : ''}{c.impact.toFixed(3)}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       )}
 
       {!isEnrolled && (
