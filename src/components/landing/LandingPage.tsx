@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { 
   Target, 
@@ -26,7 +26,7 @@ export default function LandingPage() {
   const plantScale = useTransform(scrollYProgress, [0.3, 0.5], [0.95, 1.05]);
   const plantRotate = useTransform(scrollYProgress, [0.3, 0.5], [-2, 2]);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -36,7 +36,7 @@ export default function LandingPage() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,

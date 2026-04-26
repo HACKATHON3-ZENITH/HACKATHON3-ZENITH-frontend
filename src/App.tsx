@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Link, useNavigate, Navigate } from 'react-router-dom';
-import { Sprout, BarChart3, Users, Settings, Moon, Sun, UserCircle, BookOpen } from 'lucide-react';
+import { Sprout, BarChart3, Users, Settings, Moon, Sun, UserCircle, BookOpen, Plus } from 'lucide-react';
 import LandingPage from './components/landing/LandingPage';
 import AuthPage from './pages/AuthPage';
 import OnboardingPage from './pages/OnboardingPage';
