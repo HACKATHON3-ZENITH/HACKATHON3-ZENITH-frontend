@@ -1,3 +1,8 @@
+/**
+ * TWIST 04 — La complétion d'un cours et le passage à l'action
+ * entrepreneuriale sont deux signaux DISTINCTS dans le modèle de données.
+ * Ils ne sont jamais fusionnés en un seul indicateur.
+ */
 export type ExperienceLevel = 'NONE' | 'IDEA' | 'UNDER_2_YEARS' | 'OVER_2_YEARS';
 
 export type Sector = 
