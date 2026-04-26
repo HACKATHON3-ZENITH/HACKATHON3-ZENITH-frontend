@@ -1,8 +1,11 @@
 /**
- * TWIST 02 — Aucun mécanisme de rétention artificielle.
- * Ce frontend n'implémente aucune notification push, popup de relance,
- * badge, streak ou tout autre dark pattern conçu pour retenir l'utilisateur.
- * Le système recommande des cours, il ne relance pas.
+ * ZENITH LEARN — Frontend Compliance Core (Twists 01-07)
+ * 
+ * - T01-T03-T05: Recommendation engine integration (Hybrid Score, Duration-Adjusted, Segmentation).
+ * - T02: Strict Zero-Retention policy (No push, no streaks, no badges).
+ * - T04: Signal separation (Action vs Business results).
+ * - T06: Real-variable explainability for creators and learners.
+ * - T07: Investor/Bailleur Top 100 Success Potential rankings.
  */
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Link, useNavigate, Navigate } from 'react-router-dom';
@@ -12,6 +15,7 @@ import AuthPage from './pages/AuthPage';
 import OnboardingPage from './pages/OnboardingPage';
 import ProfilePage from './pages/ProfilePage';
 import SettingsPage from './pages/SettingsPage';
+import SuccessLeaderboard from './pages/Leaderboard/SuccessLeaderboard';
 import { cn } from './lib/utils';
 import Catalogue from './pages/Catalogue/Catalogue';
 import CourseDetail from './pages/CourseDetail/CourseDetail';
@@ -177,6 +181,7 @@ function App() {
             { to: '/catalogue', icon: Sprout, label: 'Catalogue' },
             { to: '/profil', icon: UserCircle, label: 'Mon profil' },
             { to: '/settings', icon: Settings, label: 'Paramètres' },
+            { to: '/leaderboard', icon: BarChart3, label: 'Top Potentiel' },
           ].map((link) => (
             <Link
               key={link.to}
@@ -247,6 +252,7 @@ function App() {
           <Route path="/cours/:slug" element={<CourseDetail />} />
           <Route path="/profil" element={<ProfilePage />} />
           <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/leaderboard" element={<SuccessLeaderboard />} />
           <Route path="/creator/dashboard" element={<CreatorDashboard />} />
           <Route path="/creator/new-course" element={<div className="p-12 text-center">Formulaire de création de cours (Bientôt)</div>} />
           <Route path="*" element={<Navigate to="/formations" replace />} />
