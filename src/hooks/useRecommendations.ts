@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import mlApi from '@/lib/mlApi';
+import api from '@/lib/api';
 
 export const useRecommendations = () => {
   const userStr = localStorage.getItem('user');
@@ -14,8 +14,8 @@ export const useRecommendations = () => {
     queryKey: ['recommendations', userId],
     queryFn: async () => {
       if (!userId) return null;
-      const res = await mlApi.get(`/recommendations/${userId}`);
-      return res.data;
+      const res = await api.get(`/rankings/recommendations/${userId}`);
+      return res.data.data;
     },
     enabled: !!userId,
   });

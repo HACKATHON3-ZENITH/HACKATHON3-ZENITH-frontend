@@ -20,10 +20,10 @@ interface LearnerRanking {
     segment: string;
   };
   contributions?: Array<{
-    factor: string;
+    variable: string;
     weight: number | string;
     value: number;
-    impact: number;
+    contribution: number;
   }>;
   explanation?: {
     explanation_text: string;
@@ -103,9 +103,9 @@ const SuccessLeaderboard: React.FC = () => {
                         <ul className="space-y-1.5">
                           {learner.contributions.map((c, i) => (
                             <li key={i} className="flex justify-between items-center text-xs">
-                              <span>{c.factor} <span className="text-muted-foreground">({typeof c.weight === 'number' ? `x${c.weight}` : c.weight})</span></span>
-                              <span className={clsx("font-mono font-medium", c.impact >= 0 ? "text-green-600" : "text-red-500")}>
-                                {c.impact > 0 ? '+' : ''}{c.impact.toFixed(4)}
+                              <span>{c.variable} <span className="text-muted-foreground">({typeof c.weight === 'number' ? `x${c.weight}` : c.weight})</span></span>
+                              <span className={clsx("font-mono font-medium", c.contribution >= 0 ? "text-green-600" : "text-red-500")}>
+                                {c.contribution > 0 ? '+' : ''}{c.contribution.toFixed(4)}
                               </span>
                             </li>
                           ))}

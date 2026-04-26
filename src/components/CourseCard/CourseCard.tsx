@@ -34,10 +34,10 @@ interface CourseCardProps {
   badgeName?: string;
   recoReason?: string;
   contributions?: Array<{
-    factor: string;
+    variable: string;
     weight: number | string;
     value: number;
-    impact: number;
+    contribution: number;
   }>;
   isEnrolled?: boolean;
   userCompletionRate?: number;
@@ -133,8 +133,8 @@ const CourseCard: React.FC<CourseCardProps> = ({
               <p style={{ fontWeight: 800, textTransform: 'uppercase', marginBottom: '6px', fontSize: '10px', opacity: 0.8 }}>Décomposition Twist 09</p>
               {contributions.map((c, i) => (
                 <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
-                  <span>{c.factor}</span>
-                  <span style={{ fontWeight: 600 }}>{c.impact > 0 ? '+' : ''}{c.impact.toFixed(3)}</span>
+                  <span>{c.variable}</span>
+                  <span style={{ fontWeight: 600 }}>{c.contribution > 0 ? '+' : ''}{c.contribution.toFixed(3)}</span>
                 </div>
               ))}
             </div>
