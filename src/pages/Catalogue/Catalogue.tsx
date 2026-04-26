@@ -1,3 +1,8 @@
+/**
+ * TWIST 03 — La durée d'un cours est affichée à titre informatif.
+ * L'ordre de recommandation ne favorise PAS les cours courts :
+ * le moteur ML normalise la complétion par la durée.
+ */
 import React, { useState, useMemo } from 'react';
 import styles from './Catalogue.module.css';
 import CourseCard from '../../components/CourseCard/CourseCard';
