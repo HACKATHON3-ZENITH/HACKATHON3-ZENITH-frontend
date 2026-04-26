@@ -1,0 +1,207 @@
+.detail-page {
+  background-color: var(--lp-bg);
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* Hero Section */
+.hero {
+  background: white;
+  border-bottom: 1px solid var(--lp-border);
+  padding: 60px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__breadcrumbs {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--lp-text-body);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.hero__category {
+  color: var(--lp-secondary);
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.hero__title {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--lp-text-title);
+  line-height: 1.1;
+  max-width: 800px;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+
+.hero__meta {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--lp-text-body);
+  font-weight: 500;
+}
+.meta-item strong {
+  color: var(--lp-text-title);
+}
+
+/* Layout */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 48px;
+  margin-top: -40px; /* Overlap minimal */
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 1024px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    margin-top: 24px;
+  }
+}
+
+/* Main Section Card */
+.section-card {
+  background: white;
+  border-radius: 24px;
+  border: 1px solid var(--lp-border);
+  padding: 40px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--lp-text-title);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.course-description {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--lp-text-body);
+  white-space: pre-line;
+}
+
+/* Side Card (Sticky) */
+.sticky-card {
+  position: sticky;
+  top: 100px;
+  background: white;
+  border-radius: 24px;
+  border: 1px solid var(--lp-border);
+  overflow: hidden;
+  box-shadow: 0 30px 60px -12px rgba(13, 92, 77, 0.15);
+}
+
+.sticky-card__video {
+  aspect-ratio: 16 / 9;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+.sticky-card__video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.sticky-card__body {
+  padding: 32px;
+}
+
+.price-tag {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.price-value {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--lp-text-title);
+}
+.price-free {
+  color: #1A7F37;
+  font-size: 32px;
+  font-weight: 900;
+}
+
+.btn-enroll {
+  width: 100%;
+  background: var(--lp-primary);
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 20px rgba(13, 92, 77, 0.2);
+}
+.btn-enroll:hover {
+  background: var(--lp-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(13, 92, 77, 0.3);
+}
+
+.includes-list {
+  margin-top: 24px;
+  border-top: 1px solid var(--lp-border);
+  padding-top: 24px;
+}
+.includes-title {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--lp-text-title);
+  margin-bottom: 16px;
+}
+.include-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--lp-text-body);
+  margin-bottom: 10px;
+}
+
+.curriculum-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  color: var(--lp-text-body);
+}

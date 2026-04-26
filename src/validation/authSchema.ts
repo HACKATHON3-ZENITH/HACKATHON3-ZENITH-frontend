@@ -18,6 +18,7 @@ export const registerSchema = z.object({
   terms: z.boolean().refine((val) => val === true, {
     message: 'Vous devez accepter les conditions générales',
   }),
+  role: z.string().optional(),
 }).refine((data) => data.password === data.confirmPassword, {
   message: 'Les mots de passe ne correspondent pas',
   path: ['confirmPassword'],

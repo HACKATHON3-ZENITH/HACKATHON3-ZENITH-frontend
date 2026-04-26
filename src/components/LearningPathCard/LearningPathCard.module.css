@@ -1,0 +1,59 @@
+.learning-path-card {
+  flex-shrink: 0;
+  width: 320px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 16 / 6;
+  background: white;
+  border: 1px solid var(--lp-border);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.learning-path-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(13, 92, 77, 0.1);
+  border-color: var(--lp-primary);
+}
+
+.learning-path-card__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+  transition: transform 0.5s ease;
+}
+.learning-path-card:hover .learning-path-card__bg {
+  transform: scale(1.1);
+}
+
+.learning-path-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.6) 100%);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 1;
+}
+
+.learning-path-card__label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--lp-primary);
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.learning-path-card__title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--lp-text-title);
+  line-height: 1.2;
+}

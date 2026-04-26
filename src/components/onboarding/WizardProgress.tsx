@@ -20,10 +20,10 @@ export function WizardProgress({ currentStep, totalSteps }: WizardProgressProps)
               className={cn(
                 "w-10 h-10 rounded-full flex items-center justify-center border-2 transition-all duration-300",
                 isCompleted 
-                  ? "bg-academy-primary border-academy-primary text-white shadow-lg shadow-academy-primary/20" 
+                  ? "bg-brand-primary border-brand-primary text-white shadow-lg shadow-brand-primary/20" 
                   : isActive
-                    ? "bg-academy-bg-mid border-academy-primary text-academy-primary ring-4 ring-academy-primary/10"
-                    : "bg-academy-bg-mid border-academy-border text-academy-text-muted opacity-50"
+                    ? "bg-white dark:bg-gray-900 border-brand-primary text-brand-primary ring-4 ring-brand-primary/10"
+                    : "bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-gray-400 opacity-50"
               )}
             >
               {isCompleted ? <Check size={20} /> : <span className="font-bold text-sm">{step}</span>}
@@ -32,7 +32,7 @@ export function WizardProgress({ currentStep, totalSteps }: WizardProgressProps)
               <div 
                 className={cn(
                   "w-12 h-0.5 mx-2",
-                  isCompleted ? "bg-academy-primary" : "bg-academy-border"
+                  isCompleted ? "bg-brand-primary" : "bg-gray-200 dark:bg-gray-700"
                 )} 
               />
             )}

@@ -16,22 +16,22 @@ export function RadioCard({ selected, onChange, icon, title, description, classN
       onClick={onChange}
       className={cn(
         "cursor-pointer p-5 rounded-xl border-2 transition-all duration-200 flex flex-col items-center text-center space-y-3",
-        "bg-academy-bg-card/50 backdrop-blur-sm",
+        "bg-white dark:bg-gray-800/50 backdrop-blur-sm",
         selected 
-          ? "border-academy-primary bg-academy-primary/10 ring-2 ring-academy-primary/20" 
-          : "border-academy-border hover:border-academy-primary/50 hover:bg-academy-primary/5",
+          ? "border-brand-primary bg-brand-primary/10 ring-2 ring-brand-primary/20" 
+          : "border-gray-200 dark:border-gray-700 hover:border-brand-primary/50 hover:bg-brand-primary/5",
         className
       )}
     >
-      {icon && <div className={cn("p-3 rounded-full", selected ? "bg-academy-primary text-white" : "bg-academy-bg-mid text-academy-text-muted")}>
+      {icon && <div className={cn("p-3 rounded-full", selected ? "bg-brand-primary text-white" : "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500")}>
         {icon}
       </div>}
       <div>
-        <h4 className={cn("font-bold text-lg", selected ? "text-academy-text-primary" : "text-academy-text-muted")}>
+        <h4 className={cn("font-bold text-lg", selected ? "text-gray-900 dark:text-white" : "text-gray-500")}>
           {title}
         </h4>
         {description && (
-          <p className="text-xs text-academy-text-muted font-medium leading-relaxed mt-1">
+          <p className="text-xs text-gray-500 font-medium leading-relaxed mt-1">
             {description}
           </p>
         )}

@@ -1,0 +1,127 @@
+.quiz-container {
+  max-width: 680px;
+  margin: 40px auto;
+  padding: 0 var(--space-6);
+}
+
+.quiz-progress {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.quiz-progress-bar {
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin-bottom: var(--space-6);
+  overflow: hidden;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: var(--primary-light);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+
+.quiz-question {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 28px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: var(--bg-card);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: var(--text-primary);
+  width: 100%;
+  text-align: left;
+}
+
+.quiz-option:hover:not(.quiz-option--selected):not(.quiz-option--disabled) {
+  border-color: var(--primary-light);
+  background: rgba(26, 107, 60, 0.08);
+}
+
+.quiz-option--selected {
+  border-color: var(--primary-light);
+  background: rgba(26, 107, 60, 0.15);
+}
+
+.quiz-option--correct {
+  border-color: var(--success);
+  background: rgba(62, 207, 142, 0.1);
+}
+
+.quiz-option--wrong {
+  border-color: var(--danger);
+  background: rgba(224, 82, 82, 0.1);
+}
+
+.quiz-option--disabled {
+  cursor: default;
+}
+
+.quiz-option__letter {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Feedback */
+.quiz-feedback {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.quiz-feedback--correct {
+  background: rgba(62, 207, 142, 0.1);
+  border-left: 4px solid var(--success);
+  color: var(--success);
+}
+
+.quiz-feedback--wrong {
+  background: rgba(224, 82, 82, 0.1);
+  border-left: 4px solid var(--danger);
+  color: #f08080;
+}
+
+.quiz-next-btn {
+  margin-top: 24px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+}
+
+.quiz-next-btn:hover {
+  background: var(--primary-light);
+}

@@ -1,0 +1,19 @@
+:root {
+  /* Aligné sur la Landing Page */
+  --lp-bg: #F6F8FA;
+  --lp-primary: #0D5C4D;
+  --lp-primary-hover: #0a4a3e;
+  --lp-secondary: #C49A28; /* Or */
+  --lp-text-title: #1F2328; /* gray-900 */
+  --lp-text-body: #57606A;  /* gray-600 */
+  --lp-border: #D0D7DE;     /* gray-200 */
+  
+  /* Academy specific accents */
+  --success: #1A7F37;
+  --danger: #cf222e;
+  
+  /* Transitions & Radius de la Landing */
+  --radius-card: 24px;
+  --radius-btn: 12px;
+  --shadow-lp: 0 10px 30px -10px rgba(13, 92, 77, 0.15);
+}

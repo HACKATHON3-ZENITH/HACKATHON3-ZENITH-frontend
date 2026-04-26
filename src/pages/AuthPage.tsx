@@ -12,7 +12,7 @@ export default function AuthPage() {
   
   // Initialize state based on URL param
   const [isLogin, setIsLogin] = useState(mode !== 'register');
-  const { login, register, googleLogin, isLoading, error } = useAuth();
+  const { login, register, isLoading, error } = useAuth();
 
   // Sync state if URL changes
   useEffect(() => {
@@ -49,7 +49,6 @@ export default function AuthPage() {
                 >
                   <LoginForm 
                     onSubmit={login} 
-                    onGoogleLogin={googleLogin} 
                     onToggleRegister={toggleAuth} 
                     isLoading={isLoading} 
                     error={error}
@@ -66,7 +65,6 @@ export default function AuthPage() {
                 >
                   <RegisterForm 
                     onSubmit={register} 
-                    onGoogleLogin={googleLogin} 
                     onToggleLogin={toggleAuth} 
                     isLoading={isLoading} 
                     error={error}

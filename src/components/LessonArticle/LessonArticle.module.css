@@ -1,0 +1,103 @@
+.lesson-article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px var(--space-6);
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+
+.lesson-article :global(h2) {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lesson-article :global(h3) {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+
+.lesson-article :global(p) {
+  margin-bottom: 20px;
+  color: rgba(240, 237, 230, 0.85);
+}
+
+/* Encadré "Concept clé" — style Cisco */
+.lesson-article :global(.key-concept) {
+  background: rgba(26, 107, 60, 0.12);
+  border-left: 4px solid var(--primary-light);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  margin: 28px 0;
+  font-size: 15px;
+}
+
+.lesson-article :global(.key-concept)::before {
+  content: "Concept clé";
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary-light);
+  margin-bottom: 6px;
+}
+
+/* Encadré avertissement */
+.lesson-article :global(.callout-warning) {
+  background: rgba(244, 167, 38, 0.08);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 20px;
+  margin: 28px 0;
+}
+
+/* Glossaire */
+.lesson-article :global(.glossary-term) {
+  border-bottom: 1.5px dashed var(--primary-light);
+  cursor: help;
+}
+
+/* Stat block */
+.lesson-article :global(.stat-block) {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  color: var(--accent);
+  font-weight: 700;
+  display: block;
+  margin: 24px 0 4px;
+}
+
+.lesson-article :global(ul), .lesson-article :global(ol) {
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+
+.lesson-article :global(li) {
+  margin-bottom: 8px;
+  color: rgba(240, 237, 230, 0.85);
+}
+
+.lesson-article :global(ul li)::marker {
+  color: var(--primary-light);
+}
+
+.lesson-article :global(img) {
+  width: 100%;
+  border-radius: 10px;
+  margin: 24px 0;
+  border: var(--border-subtle);
+}
+
+.lesson-article :global(figcaption) {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: -12px;
+}

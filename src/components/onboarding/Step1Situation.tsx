@@ -27,8 +27,8 @@ export function Step1Situation() {
   return (
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="space-y-4">
-        <h3 className="text-3xl font-serif-academy font-bold text-academy-text-primary tracking-tight">Parlons de vous</h3>
-        <p className="text-academy-text-muted font-medium">Quel est ton niveau d'expérience entrepreneuriale ?</p>
+        <h3 className="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Parlons de vous</h3>
+        <p className="text-gray-500 font-medium">Quel est ton niveau d'expérience entrepreneuriale ?</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -45,13 +45,13 @@ export function Step1Situation() {
       </div>
 
       <div className="space-y-6 pt-6">
-        <label className="block text-sm font-black uppercase tracking-widest text-academy-text-primary">
+        <label className="block text-sm font-black uppercase tracking-widest text-gray-900 dark:text-white">
           Secteur d'activité cible
         </label>
         <select
           value={data.sector || ''}
           onChange={(e) => updateData({ sector: e.target.value as Sector })}
-          className="w-full h-14 px-6 bg-academy-bg-card border-2 border-academy-border rounded-xl text-academy-text-primary focus:border-academy-primary focus:ring-0 outline-none transition-all appearance-none cursor-pointer"
+          className="w-full h-14 px-6 bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-gray-900 dark:text-white focus:border-brand-primary focus:ring-0 outline-none transition-all appearance-none cursor-pointer"
         >
           <option value="" disabled>Sélectionner un secteur</option>
           {SECTORS.map((s) => (

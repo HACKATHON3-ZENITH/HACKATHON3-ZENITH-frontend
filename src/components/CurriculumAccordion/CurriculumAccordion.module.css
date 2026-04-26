@@ -1,0 +1,166 @@
+.course-curriculum {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.curriculum-module {
+  border: 1px solid var(--lp-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.curriculum-module__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.curriculum-module__header:hover {
+  background: #fcfcfc;
+}
+
+.curriculum-module__title {
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--lp-text-title);
+}
+
+.curriculum-module__meta {
+  font-size: 13px;
+  color: var(--lp-text-body);
+  font-weight: 500;
+}
+
+.curriculum-module__chevron {
+  transition: transform 0.3s ease;
+  color: var(--lp-text-body);
+}
+
+.curriculum-module--open .curriculum-module__chevron {
+  transform: rotate(180deg);
+}
+
+.curriculum-module__lessons {
+  display: none;
+  background: #fdfdfd;
+}
+
+.curriculum-module--open .curriculum-module__lessons {
+  display: block;
+}
+
+/* Lessons */
+.curriculum-lesson {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  margin-left: 24px;
+  border-left: 2px solid #e5e7eb;
+  transition: all 0.2s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.curriculum-lesson:hover {
+  background: white;
+}
+
+.curriculum-lesson--active {
+  background: rgba(13, 92, 77, 0.04) !important;
+  border-left-color: var(--lp-primary);
+}
+
+.curriculum-lesson--completed {
+  border-left-color: #10B981;
+}
+
+/* Status markers */
+.curriculum-lesson__status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: -10px; /* Centered exactly on the border */
+  background: white;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.status-icon-completed {
+  color: #10B981; /* Green */
+}
+
+.status-icon-active {
+  color: var(--lp-primary);
+}
+
+.status-icon-locked {
+  color: #d1d5db; /* Gray */
+}
+
+/* Type icons */
+.curriculum-lesson__icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.curriculum-lesson__icon--video {
+  background: rgba(244, 167, 38, 0.1);
+  color: #C49A28;
+}
+
+.curriculum-lesson__icon--text {
+  background: rgba(13, 92, 77, 0.1);
+  color: var(--lp-primary);
+}
+
+.curriculum-lesson__icon--quiz {
+  background: rgba(207, 34, 46, 0.1);
+  color: #cf222e;
+}
+
+.curriculum-lesson__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--lp-text-title);
+  flex: 1;
+  transition: color 0.2s ease;
+}
+
+.curriculum-lesson__title--completed {
+  color: var(--lp-text-body);
+}
+
+.curriculum-lesson--active .curriculum-lesson__title {
+  color: var(--lp-primary);
+  font-weight: 800;
+}
+
+.curriculum-lesson__duration {
+  font-size: 11px;
+  color: var(--lp-text-body);
+  font-weight: 500;
+}
+
+.curriculum-lesson__preview-badge {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: #f0f0f0;
+  color: var(--lp-text-body);
+  padding: 2px 6px;
+  border-radius: 4px;
+}

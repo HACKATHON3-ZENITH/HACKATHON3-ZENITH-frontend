@@ -1,0 +1,30 @@
+.filter-chip {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: 1px solid var(--lp-border);
+  background: white;
+  color: var(--lp-text-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  border-color: var(--lp-primary);
+  color: var(--lp-primary);
+  background: rgba(13, 92, 77, 0.05);
+}
+
+.filter-chip--active {
+  background: var(--lp-primary);
+  border-color: var(--lp-primary);
+  color: white;
+  box-shadow: 0 4px 10px rgba(13, 92, 77, 0.2);
+}
+
+.filter-chip--active:hover {
+  background: var(--lp-primary-hover);
+  color: white;
+}

@@ -1,21 +1,17 @@
 import api from '@/lib/api';
-import { AuthResponse } from '@/types/auth';
+import { User, ApiResponse } from '@/types/auth';
 import { LoginInput, RegisterInput } from '@/validation/authSchema';
 
 export const authService = {
-  async login(data: LoginInput): Promise<AuthResponse> {
-    const response = await api.post<AuthResponse>('/auth/login', data);
-    return response.data;
+  async login(data: LoginInput): Promise<User> {
+    const response = await api.post<ApiResponse<User>>('/auth/login', data);
+    return response.data.data;
   },
 
-  async register(data: RegisterInput): Promise<AuthResponse> {
+  async register(data: RegisterInput): Promise<User> {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { confirmPassword, terms, ...registerData } = data;
-    const response = await api.post<AuthResponse>('/auth/register', registerData);
-    return response.data;
-  },
-
-  googleLogin(): void {
-    window.location.href = `${import.meta.env.VITE_API_URL}/oauth2/google`;
-  },
+    const response = await api.post<ApiResponse<User>>('/auth/register', registerData);
+    return response.data.data;
+  }
 };

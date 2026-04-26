@@ -22,8 +22,8 @@ export function Step3Constraints() {
   return (
     <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
       <div className="space-y-4">
-        <h3 className="text-3xl font-serif-academy font-bold text-academy-text-primary tracking-tight">Organisation</h3>
-        <p className="text-academy-text-muted font-medium">Combien de temps peux-tu consacrer à la formation par semaine ?</p>
+        <h3 className="text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Organisation</h3>
+        <p className="text-gray-500 font-medium">Combien de temps peux-tu consacrer à la formation par semaine ?</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -40,7 +40,7 @@ export function Step3Constraints() {
       </div>
 
       <div className="space-y-6 pt-6">
-        <p className="text-academy-text-muted font-medium">Quel est ton niveau de formation général ?</p>
+        <p className="text-gray-500 font-medium">Quel est ton niveau de formation général ?</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {EDUCATION_OPTIONS.map((opt) => (
             <RadioCard

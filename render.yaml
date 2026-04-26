@@ -1,0 +1,14 @@
+services:
+  - type: static
+    name: zenith-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    publishPath: ./dist
+    plan: free
+    envVars:
+      - key: VITE_API_URL
+        value: https://zenith-backend-xevt.onrender.com/api/v1
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
