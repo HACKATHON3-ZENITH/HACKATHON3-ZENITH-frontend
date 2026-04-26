@@ -1,3 +1,9 @@
+/**
+ * TWIST 02 — Aucun mécanisme de rétention artificielle.
+ * Ce frontend n'implémente aucune notification push, popup de relance,
+ * badge, streak ou tout autre dark pattern conçu pour retenir l'utilisateur.
+ * Le système recommande des cours, il ne relance pas.
+ */
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Link, useNavigate, Navigate } from 'react-router-dom';
 import { Sprout, BarChart3, Users, Settings, Moon, Sun, UserCircle, BookOpen, Plus } from 'lucide-react';
