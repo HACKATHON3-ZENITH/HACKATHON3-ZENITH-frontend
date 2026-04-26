@@ -142,7 +142,7 @@ function MyFormations() {
 function App() {
   const location = useLocation();
   const path = location.pathname;
-  
+  const isIAAnalysis = path === '/ia-analyse';
   const isLandingPage = path === '/';
   const isAuthPage = path === '/auth';
   const isOnboardingPage = path === '/onboarding';
@@ -152,8 +152,8 @@ function App() {
   const user = userStr ? JSON.parse(userStr) : null;
   const isCreator = user?.role === 'CREATOR' || user?.role === 'ADMIN';
 
-  // Landing, Auth, Onboarding and Lesson Reader are immersive (no sidebar)
-  if (isLandingPage || isAuthPage || isOnboardingPage || isLessonReader) {
+  // Landing, Auth, Onboarding, IA Analysis and Lesson Reader are immersive (no sidebar)
+  if (isLandingPage || isAuthPage || isOnboardingPage || isLessonReader || isIAAnalysis) {
     return (
       <Routes>
         <Route path="/" element={<LandingPage />} />
