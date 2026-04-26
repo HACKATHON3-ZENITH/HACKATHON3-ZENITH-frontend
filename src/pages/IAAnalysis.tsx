@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   BarChart3, 
@@ -17,18 +17,81 @@ import {
 } from 'lucide-react';
 import { Navbar } from '@/components/landing/Navbar';
 import { Footer } from '@/components/landing/Footer';
-import { useCourses } from '@/hooks/useCourses';
-import { useCourseInsights } from '@/hooks/useML';
 import { clsx } from 'clsx';
+
+// ── MOCK DATA (10 COURSES) ──────────────────────────────────────────
+const MOCK_COURSES = [
+  { id: 'c1', title: 'AgriTech : Moderniser l\'irrigation au Sahel', categoryName: 'Agriculture', level: 'Intermédiaire', duration: 12 },
+  { id: 'c2', title: 'Fintech : Fondamentaux du Mobile Money', categoryName: 'Finance', level: 'Débutant', duration: 8 },
+  { id: 'c3', title: 'Solaire : Installation de kits domestiques', categoryName: 'Énergie', level: 'Avancé', duration: 25 },
+  { id: 'c4', title: 'E-commerce : Logistique du dernier kilomètre', categoryName: 'Business', level: 'Intermédiaire', duration: 15 },
+  { id: 'c5', title: 'Cultures Maraîchères : Cycle de la Tomate', categoryName: 'Agriculture', level: 'Débutant', duration: 10 },
+  { id: 'c6', title: 'Python pour l\'Analyse de Données Agricoles', categoryName: 'Tech', level: 'Avancé', duration: 30 },
+  { id: 'c7', title: 'Gestion d\'une Coopérative Agricole', categoryName: 'Business', level: 'Intermédiaire', duration: 20 },
+  { id: 'c8', title: 'Marketing Digital pour PME Africaines', categoryName: 'Marketing', level: 'Débutant', duration: 12 },
+  { id: 'c9', title: 'Élevage Volaille : Biosécurité et Rendement', categoryName: 'Élevage', level: 'Intermédiaire', duration: 18 },
+  { id: 'c10', title: 'Blockchain : Traçabilité des Chaînes de Valeur', categoryName: 'Tech', level: 'Avancé', duration: 22 },
+];
+
+const MOCK_INSIGHTS: Record<string, any> = {
+  'c1': {
+    global_relevance_score: 0.88,
+    positive_factors: ["Forte demande sur le segment Sahel", "Engagement élevé des entrepreneurs ruraux", "Validation terrain (T04) importante"],
+    negative_factors: ["Coût d'investissement initial élevé", "Niveau technique requis important"],
+    shap_data: [92, 88, 75, 90]
+  },
+  'c2': {
+    global_relevance_score: 0.95,
+    positive_factors: ["Taux de complétion record (T03)", "Popularité virale", "Facilité d'accès"],
+    negative_factors: ["Forte concurrence sur le sujet"],
+    shap_data: [98, 45, 95, 92]
+  },
+  'c3': {
+    global_relevance_score: 0.72,
+    positive_factors: ["Impact environnemental immédiat", "Certifiant"],
+    negative_factors: ["Durée trop longue (T03)", "Déséquilibre théorie/pratique"],
+    shap_data: [65, 80, 35, 78]
+  },
+  'c4': {
+    global_relevance_score: 0.81,
+    positive_factors: ["Répond à un besoin logistique critique", "Partenariats locaux"],
+    negative_factors: ["Complexité administrative"],
+    shap_data: [82, 77, 60, 85]
+  },
+  'c5': {
+    global_relevance_score: 0.90,
+    positive_factors: ["Extrêmement débutant-friendly", "Résultats rapides"],
+    negative_factors: ["Saisonnalité des données"],
+    shap_data: [95, 40, 98, 90]
+  }
+};
+
+// Default generic insight for others
+const DEFAULT_INSIGHT = {
+  global_relevance_score: 0.75,
+  positive_factors: ["Thématique porteuse", "Qualité pédagogique"],
+  negative_factors: ["Manque de données historiques"],
+  shap_data: [70, 60, 50, 65]
+};
 
 const IAAnalysis: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCourseId, setSelectedCourseId] = useState<string | null>(null);
   
-  const { data: courses, isLoading: coursesLoading } = useCourses({ search: searchQuery });
-  const { data: insights, isLoading: insightsLoading } = useCourseInsights(selectedCourseId);
+  const filteredCourses = useMemo(() => {
+    return MOCK_COURSES.filter(c => 
+      c.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      c.categoryName.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  }, [searchQuery]);
 
-  const selectedCourse = courses?.find((c: any) => c.id === selectedCourseId);
+  const selectedCourse = useMemo(() => 
+    MOCK_COURSES.find(c => c.id === selectedCourseId)
+  , [selectedCourseId]);
+
+  const insights = useMemo(() => 
+    selectedCourseId ? (MOCK_INSIGHTS[selectedCourseId] || DEFAULT_INSIGHT) : null
+  , [selectedCourseId]);
 
   return (
     <div className="min-h-screen bg-[#F6F8FA] font-sans selection:bg-brand-primary/10">
@@ -52,7 +115,7 @@ const IAAnalysis: React.FC = () => {
             </h1>
             
             <p className="text-xl text-gray-600 font-medium leading-relaxed">
-              Consultez les critères de recommandation de chaque cours. 
+              Consultez les critères de recommandation de chaque cours (MOCKED). 
               Comprenez pourquoi notre modèle valorise certains parcours plutôt que d'autres.
             </p>
           </div>
@@ -74,12 +137,10 @@ const IAAnalysis: React.FC = () => {
                 </div>
 
                 <div className="space-y-2 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
-                  {coursesLoading ? (
-                    [1,2,3].map(i => <div key={i} className="h-16 bg-gray-50 rounded-2xl animate-pulse" />)
-                  ) : courses?.length === 0 ? (
+                  {filteredCourses.length === 0 ? (
                     <p className="text-center text-gray-400 py-8">Aucun cours trouvé</p>
                   ) : (
-                    courses?.map((course: any) => (
+                    filteredCourses.map((course: any) => (
                       <button
                         key={course.id}
                         onClick={() => setSelectedCourseId(course.id)}
@@ -143,19 +204,6 @@ const IAAnalysis: React.FC = () => {
                       Choisissez un cours dans la liste de gauche pour découvrir comment notre moteur de recommandation l'analyse.
                     </p>
                   </motion.div>
-                ) : insightsLoading ? (
-                  <motion.div 
-                    key="loading"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="h-full min-h-[500px] bg-white rounded-[40px] flex items-center justify-center"
-                  >
-                    <div className="flex flex-col items-center">
-                      <div className="w-12 h-12 border-4 border-brand-primary/20 border-t-brand-primary rounded-full animate-spin mb-4" />
-                      <p className="text-gray-400 font-bold uppercase tracking-widest text-xs">Calcul des insights SHAP...</p>
-                    </div>
-                  </motion.div>
                 ) : (
                   <motion.div
                     key={selectedCourseId}
@@ -170,7 +218,7 @@ const IAAnalysis: React.FC = () => {
                       
                       <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
                         <div>
-                          <p className="text-brand-primary font-black uppercase tracking-widest text-xs mb-2">Analyse modèle — Twist 06</p>
+                          <p className="text-brand-primary font-black uppercase tracking-widest text-xs mb-2">Analyse modèle (Mode Mock) — Twist 06</p>
                           <h2 className="text-3xl font-black text-gray-900 mb-2">{selectedCourse?.title}</h2>
                           <div className="flex flex-wrap gap-2">
                              <span className="px-3 py-1 bg-gray-100 rounded-full text-xs font-bold text-gray-500">{selectedCourse?.categoryName}</span>
@@ -221,10 +269,10 @@ const IAAnalysis: React.FC = () => {
                         <h4 className="text-sm font-black text-gray-900 uppercase tracking-widest">Décomposition de la Résonance (Quantitative)</h4>
                         <div className="space-y-6">
                            {[
-                             { label: "Adéquation Segment", val: 85, color: "bg-brand-primary" },
-                             { label: "Signal Actions Terrain", val: 65, color: "bg-emerald-500" },
-                             { label: "Complexité vs Niveau", val: 45, color: "bg-amber-500" },
-                             { label: "Score de Rétention", val: 92, color: "bg-brand-secondary" }
+                             { label: "Adéquation Segment", val: insights?.shap_data[0] || 70, color: "bg-brand-primary" },
+                             { label: "Signal Actions Terrain", val: insights?.shap_data[1] || 60, color: "bg-emerald-500" },
+                             { label: "Complexité vs Niveau", val: insights?.shap_data[2] || 50, color: "bg-amber-500" },
+                             { label: "Score de Rétention", val: insights?.shap_data[3] || 65, color: "bg-brand-secondary" }
                            ].map((bar, i) => (
                              <div key={i}>
                                 <div className="flex justify-between text-xs font-bold mb-2">
@@ -235,7 +283,7 @@ const IAAnalysis: React.FC = () => {
                                    <motion.div 
                                       initial={{ width: 0 }}
                                       animate={{ width: `${bar.val}%` }}
-                                      transition={{ delay: 0.5 + i * 0.1, duration: 1 }}
+                                      transition={{ delay: 0.2 + i * 0.1, duration: 0.8 }}
                                       className={clsx("h-full rounded-full", bar.color)}
                                     />
                                 </div>
@@ -245,7 +293,9 @@ const IAAnalysis: React.FC = () => {
                       </div>
 
                       <div className="mt-12 p-6 bg-blue-50 rounded-3xl flex items-start space-x-4 border border-blue-100">
-                        <Info className="text-blue-600 mt-1 flex-shrink-0" size={20} />
+                        <div className="p-2 bg-blue-600 rounded-lg text-white">
+                           <Info size={20} />
+                        </div>
                         <div className="space-y-1">
                            <h5 className="font-bold text-blue-900">Note Technique (Auditeur)</h5>
                            <p className="text-xs text-blue-700 leading-relaxed">
