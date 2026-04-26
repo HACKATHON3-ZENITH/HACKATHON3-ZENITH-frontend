@@ -177,11 +177,15 @@ const IAAnalysis: React.FC = () => {
               <div className="p-6 bg-brand-primary/5 rounded-3xl border border-brand-primary/10">
                 <div className="flex items-center space-x-3 mb-3">
                   <ShieldCheck className="text-brand-primary" size={20} />
-                  <h4 className="font-bold text-gray-900">Équité (T08)</h4>
+                  <h4 className="font-bold text-gray-900">Équité & Fiabilité (T08/T10)</h4>
                 </div>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  Notre algorithme neutralise automatiquement les avantages indus liés au temps libre excessif des apprenants, garantissant que la visibilité des cours dépend de leur qualité intrinsèque.
+                <p className="text-sm text-gray-500 leading-relaxed mb-4">
+                  Notre algorithme neutralise les biais de disponibilité et évalue la fiabilité des actions auto-déclarées (TWIST 10).
                 </p>
+                <div className="flex items-center space-x-2 text-[10px] font-black text-brand-primary uppercase tracking-widest">
+                   <div className="w-2 h-2 rounded-full bg-brand-primary animate-pulse" />
+                   <span>Audit de confiance actif</span>
+                </div>
               </div>
             </div>
 
