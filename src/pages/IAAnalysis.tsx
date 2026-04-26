@@ -28,7 +28,7 @@ const IAAnalysis: React.FC = () => {
   const { data: courses, isLoading: coursesLoading } = useCourses({ search: searchQuery });
   const { data: insights, isLoading: insightsLoading } = useCourseInsights(selectedCourseId);
 
-  const selectedCourse = courses?.find(c => c.id === selectedCourseId);
+  const selectedCourse = courses?.find((c: any) => c.id === selectedCourseId);
 
   return (
     <div className="min-h-screen bg-[#F6F8FA] font-sans selection:bg-brand-primary/10">
@@ -79,7 +79,7 @@ const IAAnalysis: React.FC = () => {
                   ) : courses?.length === 0 ? (
                     <p className="text-center text-gray-400 py-8">Aucun cours trouvé</p>
                   ) : (
-                    courses?.map((course) => (
+                    courses?.map((course: any) => (
                       <button
                         key={course.id}
                         onClick={() => setSelectedCourseId(course.id)}
