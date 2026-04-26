@@ -1,43 +1,38 @@
 # Zenith Learn - Frontend
 
-Plateforme de formation entrepreneuriale éthique destinée aux marchés africains.
+## La formation qui crée des entrepreneurs, pas des spectateurs
 
-## Technologies
+La vision de **Zenith Learn** est de révolutionner l'apprentissage en ligne. Fini les plateformes qui vous gardent captifs avec des notifications incessantes et des séries (streaks) culpabilisantes. Zenith Learn est conçu selon la pédagogie **Skills2Job** : l'objectif n'est pas de consommer du contenu, mais de passer à l'action. 
 
-- **Framework**: React 18+ (Vite)
-- **Langage**: TypeScript
-- **Style**: TailwindCSS + CSS Modules (Tokens)
-- **Gestion d'état**: Zustand
-- **Données**: TanStack Query (React Query) + Axios
-- **Icônes**: Lucide React
+Notre application privilégie la complétion réelle et le passage à l'acte entrepreneurial. Nos algorithmes (sans biais et expliquables) identifient votre profil (Explorateur, Entrepreneur actif) et vous recommandent exactement ce dont vous avez besoin pour bâtir votre projet, sans aucune rétention artificielle.
 
-## Installation
+## Comment lancer le Frontend
 
-```bash
-# Dans le dossier zenith-frontend
-npm install
-```
+L'interface de Zenith Learn est développée avec **React**, **TypeScript** et **Vite**.
 
-## Lancement
+1. Assurez-vous d'avoir Node.js installé, puis placez-vous dans le répertoire :
+   ```bash
+   cd zenith-frontend
+   ```
+2. Installez les dépendances :
+   ```bash
+   npm install
+   ```
+3. Lancez le serveur de développement :
+   ```bash
+   npm run dev
+   ```
+4. L'interface s'ouvrira sur `http://localhost:3000`.
 
-```bash
-# Mode développement
-npm run dev
-```
+*Le frontend se connecte par défaut au Backend (`http://localhost:8080`) et directement au moteur ML (`http://localhost:8000`) pour récupérer les recommandations personnalisées dynamiques.*
 
-## Structure du Design System
+## Utilisateurs de test (Générés au startup du backend)
 
-Les variables de design sont centralisées dans `src/styles/tokens.css`.
-Le thème supporte nativement le mode clair et sombre via la classe `.dark` sur l'élément `html`.
+Pour tester la vue personnalisée du catalogue complet (recommandations ML), utilisez ces identifiants préconfigurés par le backend :
 
-### Couleurs Principales
-- **Primaire**: Vert Jungle (`#0D5C4D`)
-- **Secondaire**: Or Africain (`#C49A28`)
+- **Alice (Développement)** : `alice.dev@example.com`
+- **Bob (Marketing)** : `bob.market@example.com`
+- **Charlie (Finance)** : `charlie.fin@example.com`
+- **Diana (Leadership)** : `diana.lead@example.com`
 
-## Architecture des dossiers
-
-- `src/lib`: Configuration des bibliothèques externes (Axios, utils).
-- `src/styles`: Fichiers CSS globaux et tokens.
-- `src/hooks`: Hooks React personnalisés.
-- `src/stores`: Stores Zustand.
-- `src/components`: Composants UI réutilisables.
+**Mot de passe utilisé pour tous les comptes** : `password123`

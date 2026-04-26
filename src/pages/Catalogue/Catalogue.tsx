@@ -9,9 +9,10 @@ import CourseCard from '../../components/CourseCard/CourseCard';
 import CourseGrid from '../../components/CourseGrid/CourseGrid';
 import FilterChip from '../../components/FilterChip/FilterChip';
 import { useCourses } from '../../hooks/useCourses';
+import { useRecommendations } from '../../hooks/useRecommendations';
 import { useNavigate } from 'react-router-dom';
 import { clsx } from 'clsx';
-import { Search, LayoutGrid, List, SlidersHorizontal, X, Loader2 } from 'lucide-react';
+import { Search, LayoutGrid, List, SlidersHorizontal, X, Loader2, Sparkles } from 'lucide-react';
 
 const CATEGORIES = [
   { id: 'all', label: 'Tous les cours' },
@@ -46,6 +47,8 @@ const Catalogue: React.FC = () => {
   }, [search, activeCategory, activeLevel]);
 
   const { data: courses, isLoading, error } = useCourses(queryParams);
+  const { data: mlData, isLoading: mlLoading } = useRecommendations();
+  
   const total = courses?.length || 0;
 
   const handleResetFilters = () => {
@@ -53,6 +56,19 @@ const Catalogue: React.FC = () => {
     setActiveLevel('all');
     setSearch('');
   };
+
+  const recommendedCourses = useMemo(() => {
+    if (!mlData || !courses) return [];
+    return mlData.recommendations.map((reco: any) => {
+      const parent = courses.find((c: any) => c.id === reco.course_id || (c.slug && c.slug.includes(reco.course_id)));
+      if (!parent) return null;
+      let segmentLabel = mlData.segment === 'entrepreneur_actif' ? 'Entrepreneurs actifs' : 'Explorateurs';
+      return {
+        ...parent,
+        recoReason: `★ Recommandé par Zenith ML (Score: ${Math.round(reco.final_score * 100)}%). Parfait pour les ${segmentLabel.toLowerCase()}.`
+      };
+    }).filter(Boolean).slice(0, 4);
+  }, [mlData, courses]);
 
   return (
     <div className={styles['catalog-page']}>
@@ -112,7 +128,29 @@ const Catalogue: React.FC = () => {
           </button>
         </div>
 
-        {/* GRILLE DE COURS */}
+        {/* ML RECOMMENDATIONS SECTION */}
+        {!search && activeCategory === 'all' && activeLevel === 'all' && recommendedCourses.length > 0 && (
+          <div style={{ marginBottom: '40px', background: 'linear-gradient(to right, #f8fafc, #edf2f7)', padding: '30px', borderRadius: '16px', borderLeft: '4px solid #0D5C4D' }}>
+            <h2 style={{ fontSize: '1.5rem', color: '#0D5C4D', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Sparkles size={24} color="#0D5C4D" /> Recommandés pour vous
+            </h2>
+            <p style={{ color: '#4a5568', marginBottom: '24px' }}>
+              Basé sur votre profil ({mlData.segment === 'entrepreneur_actif' ? 'Entrepreneur Actif' : 'Explorateur'}) et vos interactions.
+            </p>
+            <CourseGrid>
+              {recommendedCourses.map((course: any) => (
+                <CourseCard 
+                  key={`reco-${course.id}`} 
+                  {...course} 
+                  variant={viewMode === 'list' ? 'compact' : 'default'}
+                  onClick={() => navigate(`/cours/${course.slug}`)}
+                />
+              ))}
+            </CourseGrid>
+          </div>
+        )}
+
+        {/* GRILLE DE COURS GENERALE */}
         {isLoading ? (
           <div className={styles['catalog-loading']}>
             <Loader2 className="animate-spin" size={40} />
@@ -127,16 +165,21 @@ const Catalogue: React.FC = () => {
             </button>
           </div>
         ) : total > 0 ? (
-          <CourseGrid>
-            {courses?.map((course: any) => (
-              <CourseCard 
-                key={course.id} 
-                {...course} 
-                variant={viewMode === 'list' ? 'compact' : 'default'}
-                onClick={() => navigate(`/cours/${course.slug}`)}
-              />
-            ))}
-          </CourseGrid>
+          <>
+            {!search && activeCategory === 'all' && activeLevel === 'all' && recommendedCourses.length > 0 && (
+              <h3 style={{ marginBottom: '20px', color: '#2d3748' }}>Tous les cours</h3>
+            )}
+            <CourseGrid>
+              {courses?.map((course: any) => (
+                <CourseCard 
+                  key={course.id} 
+                  {...course} 
+                  variant={viewMode === 'list' ? 'compact' : 'default'}
+                  onClick={() => navigate(`/cours/${course.slug}`)}
+                />
+              ))}
+            </CourseGrid>
+          </>
         ) : (
           <div className={styles['catalog-empty']}>
             <h3>Aucun cours trouvé</h3>
