@@ -11,7 +11,8 @@ import {
   UsersRound,
   ArrowRight,
   TrendingUp,
-  Globe
+  Globe,
+  BrainCircuit
 } from 'lucide-react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
@@ -83,13 +84,17 @@ export default function LandingPage() {
               L'excellence entrepreneuriale au service de l'impact. Une plateforme guidée par votre vision, propulsée par une expertise locale.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-              <Link to="/auth?mode=register" className="px-10 py-5 bg-brand-primary text-white text-center font-bold rounded-button hover:bg-brand-primary-hover transition-all shadow-xl shadow-brand-primary/25 hover:-translate-y-1 active:scale-95">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              <Link to="/auth?mode=register" className="px-8 py-4 bg-brand-primary text-white text-center font-bold rounded-button hover:bg-brand-primary-hover transition-all shadow-xl shadow-brand-primary/25 hover:-translate-y-1 active:scale-95">
                 Initialiser mon projet
               </Link>
-              <a href="#formations" className="px-10 py-5 bg-white text-gray-700 border border-gray-200 font-bold rounded-button hover:bg-gray-50 transition-all hover:border-brand-primary/30 active:scale-95 group flex items-center justify-center">
-                Voir l'écosystème 
-                <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
+              <Link to="/ia-analyse" className="px-8 py-4 bg-white text-brand-primary border border-brand-primary font-bold rounded-button hover:bg-brand-primary/5 transition-all active:scale-95 group flex items-center justify-center">
+                Analyse IA
+                <BrainCircuit className="ml-2" size={18} />
+              </Link>
+              <a href="#formations" className="px-8 py-4 bg-white text-gray-700 border border-gray-200 font-bold rounded-button hover:bg-gray-50 transition-all hover:border-brand-primary/30 active:scale-95 group flex items-center justify-center">
+                Écosystème
+                <ChevronRight className="ml-1 group-hover:translate-x-1 transition-transform" size={18} />
               </a>
             </motion.div>
 
@@ -277,9 +282,12 @@ export default function LandingPage() {
                 <p className="text-xl text-gray-400 font-medium leading-relaxed">
                   Pas de fioritures. Uniquement des outils robustes, pensés pour la réalité du terrain et la performance.
                 </p>
-                <div className="pt-6">
+                <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-6">
                   <Link to="/auth?mode=register" className="inline-block px-8 py-4 bg-brand-secondary text-gray-950 font-bold rounded-button hover:bg-[#E8B84B] transition-all hover:-translate-y-1">
                     Activer mon accès Premium
+                  </Link>
+                  <Link to="/ia-analyse" className="inline-block px-8 py-4 bg-white/10 text-white border border-white/20 font-bold rounded-button hover:bg-white/20 transition-all">
+                    Décomposition IA
                   </Link>
                 </div>
               </div>
