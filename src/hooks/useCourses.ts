@@ -26,12 +26,14 @@ export const useCourses = (params: any) => {
       }));
 
       // Clientside filtering
-      return mappedCourses.filter((c: any) => {
+      const filtered = mappedCourses.filter((c: any) => {
         if (params.search && !c.title.toLowerCase().includes(params.search.toLowerCase())) return false;
-        if (params.category && params.category !== 'all' && c.categoryName.toLowerCase().indexOf(params.category.toLowerCase()) === -1) return false;
+        if (params.category && params.category !== 'all' && c.category?.slug !== params.category) return false;
         if (params.level && params.level !== 'all' && c.level !== params.level) return false;
         return true;
       });
+
+      return filtered;
     }
   });
 };

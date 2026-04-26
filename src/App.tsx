@@ -1,11 +1,12 @@
 /**
- * ZENITH LEARN — Frontend Compliance Core (Twists 01-07)
+ * ZENITH LEARN — Frontend Compliance Core (Twists 01-08)
  * 
  * - T01-T03-T05: Recommendation engine integration (Hybrid Score, Duration-Adjusted, Segmentation).
  * - T02: Strict Zero-Retention policy (No push, no streaks, no badges).
  * - T04: Signal separation (Action vs Business results).
  * - T06: Real-variable explainability for creators and learners.
  * - T07: Investor/Bailleur Top 100 Success Potential rankings.
+ * - T08: Neutralisation du biais de disponibilité (ML-Side).
  */
 import { useState, useEffect } from 'react';
 import { Routes, Route, useLocation, Link, useNavigate, Navigate } from 'react-router-dom';

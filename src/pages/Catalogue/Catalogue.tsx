@@ -16,9 +16,9 @@ import { Search, LayoutGrid, List, SlidersHorizontal, X, Loader2 } from 'lucide-
 const CATEGORIES = [
   { id: 'all', label: 'Tous les cours' },
   { id: 'finance', label: 'Finance' },
-  { id: 'tech', label: 'Technologie' },
+  { id: 'digital', label: 'Technologie' },
   { id: 'marketing', label: 'Marketing' },
-  { id: 'soft-skills', label: 'Soft Skills' },
+  { id: 'perso', label: 'Soft Skills' },
   { id: 'management', label: 'Management' }
 ];
 
@@ -117,6 +117,14 @@ const Catalogue: React.FC = () => {
           <div className={styles['catalog-loading']}>
             <Loader2 className="animate-spin" size={40} />
             <p style={{ marginTop: '20px' }}>Chargement du catalogue...</p>
+          </div>
+        ) : error ? (
+          <div className={styles['catalog-empty']}>
+            <h3 style={{ color: '#ef4444' }}>Erreur de chargement</h3>
+            <p>Nous n'avons pas pu récupérer les cours. Le serveur est peut-être en maintenance.</p>
+            <button onClick={() => window.location.reload()} className={styles['btn-primary']} style={{ marginTop: '20px', padding: '10px 30px' }}>
+              Réessayer
+            </button>
           </div>
         ) : total > 0 ? (
           <CourseGrid>
