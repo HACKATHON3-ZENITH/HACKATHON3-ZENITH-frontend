@@ -1,3 +1,8 @@
+/**
+ * TWIST 06 — Le système produit des raisons de recommandation (recoReason)
+ * explicables. Chaque raison est basée sur les variables réelles du modèle
+ * ML (taux d'engagement, complétion ajustée, ou segment utilisateur).
+ */
 import React from 'react';
 import styles from './CourseCard.module.css';
 import { clsx } from 'clsx';
