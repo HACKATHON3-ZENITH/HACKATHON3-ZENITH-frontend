@@ -4,7 +4,6 @@ services:
     env: static
     buildCommand: npm install && npm run build
     staticPublishPath: ./dist
-    plan: free
     envVars:
       - key: VITE_API_URL
         value: https://zenith-backend-xevt.onrender.com/api/v1
